@@ -20,7 +20,7 @@ func InitRouter() *gin.Engine {
 	{
 		v1Group.GET("/tags", v1.GetTags)
 		v1Group.POST("/tags", v1.AddTags)
-		v1Group.PUT("/tags/:1", v1.EditTags)
+		v1Group.PUT("/tags/:id", v1.EditTags)
 		v1Group.DELETE("/tags/:id", v1.DeleteTags)
 	}
 
