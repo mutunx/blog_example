@@ -51,7 +51,7 @@ func AddTag(name string, state int, createdBy string) bool {
 }
 
 func (tag *Tag) BeforeCreate(scope *gorm.Scope) error {
-	_ = scope.SetColumn("CreateOn", time.Now().Unix())
+	_ = scope.SetColumn("CreatedOn", time.Now().Unix())
 
 	return nil
 }
