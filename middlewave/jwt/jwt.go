@@ -2,6 +2,7 @@ package jwt
 
 import (
 	"ginExample/pkg/e"
+	"ginExample/pkg/logging"
 	"ginExample/pkg/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -12,7 +13,7 @@ func JWT() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		var code int
 		var data interface{}
-
+		logging.Info("开始鉴权")
 		// 设置默认值
 		code = e.SUCCESS
 		// token处理

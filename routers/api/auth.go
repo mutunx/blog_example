@@ -3,6 +3,7 @@ package api
 import (
 	"ginExample/models"
 	"ginExample/pkg/e"
+	"ginExample/pkg/logging"
 	"ginExample/pkg/util"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -24,12 +25,12 @@ func GetAuth(c *gin.Context) {
 	isExist := models.CheckAuth(username, password)
 	if isExist {
 		// 获取token
-		token, er := util.GenerateToken(username, password)
-		if er != nil {
+		token, err := util.GenerateToken(username, password)
+		if err != nil {
+			logging.Info("无效token")
 			code = e.ERROR_AUTH_TOKEN
 		} else {
 			data["token"] = token
-
 			code = e.SUCCESS
 		}
 
